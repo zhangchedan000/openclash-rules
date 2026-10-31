@@ -14,13 +14,13 @@ OpenClash 自定义分流规则
 在 iPhone Safari 打开：
 
 ```
-shadowrocket://config/add/https://cdn.jsdelivr.net/gh/zhangchedan000/openclash-rules@main/shadowrocket.conf
+shadowrocket://config/add/https://testingcf.jsdelivr.net/gh/zhangchedan000/openclash-rules@main/shadowrocket.conf
 ```
 
 或在小火箭「配置」页右上角 ＋，粘贴：
 
 ```
-https://cdn.jsdelivr.net/gh/zhangchedan000/openclash-rules@main/shadowrocket.conf
+https://testingcf.jsdelivr.net/gh/zhangchedan000/openclash-rules@main/shadowrocket.conf
 ```
 
 导入后点这个配置 →「使用配置」，首页「全局路由」选「配置」。节点在首页用订阅添加，策略组按节点名字自动归类（香港/美国/英国/德国/家宽）。
@@ -29,7 +29,7 @@ https://cdn.jsdelivr.net/gh/zhangchedan000/openclash-rules@main/shadowrocket.con
 圈X 右下角风车 →「配置文件」→「下载」，粘贴：
 
 ```
-https://cdn.jsdelivr.net/gh/zhangchedan000/openclash-rules@main/quantumultx.conf
+https://testingcf.jsdelivr.net/gh/zhangchedan000/openclash-rules@main/quantumultx.conf
 ```
 
 下载后在「节点」→「引用」里添加你的订阅，首页运行模式选「规则分流」。策略组和小火箭一样按节点名字自动归类。
