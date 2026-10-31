@@ -1,0 +1,46 @@
+# 由 rules.yaml 自动生成，不要手改，改 rules.yaml 或对应的 *.template.conf
+
+HOST-SUFFIX,seller.tiktokshopglobalselling.com,direct
+HOST-SUFFIX,capitalone.com,💳 PayPal
+HOST-SUFFIX,sofi.com,💳 PayPal
+HOST-KEYWORD,sofi,💳 PayPal
+HOST-SUFFIX,interactivebrokers.com,💳 PayPal
+HOST-SUFFIX,revolut.com,💳 PayPal
+HOST-SUFFIX,epdg.epc.att.net,💳 PayPal
+HOST-SUFFIX,t-mobile.com,💳 PayPal
+HOST-KEYWORD,t-mobile,💳 PayPal
+HOST-SUFFIX,whatsapp.com,🏠 家宽节点
+HOST-SUFFIX,stripe.com,🏠 家宽节点
+HOST-SUFFIX,apple-relay.cloudflare.com,🤖 ChatGPT
+HOST-SUFFIX,apple-relay.fastly-edge.com,🤖 ChatGPT
+HOST-SUFFIX,apple-relay.apple.com,🤖 ChatGPT
+HOST-SUFFIX,siri.apple.com,🤖 ChatGPT
+HOST-SUFFIX,guzzoni.apple.com,🤖 ChatGPT
+HOST-KEYWORD,labs.google,🤖 ChatGPT
+HOST-SUFFIX,anthropic.com,🇺🇸 美国节点
+HOST-KEYWORD,claude,🇺🇸 美国节点
+HOST-SUFFIX,monese.com,🇩🇪 德国节点
+HOST-KEYWORD,bybit,🇩🇪 德国节点
+HOST-SUFFIX,coinbase.com,🇩🇪 德国节点
+HOST-KEYWORD,coinbase,🇩🇪 德国节点
+HOST-SUFFIX,zopa.com,🇬🇧 英国节点
+HOST-SUFFIX,zopa.cn,🇬🇧 英国节点
+HOST-SUFFIX,gsa.apple.com,🇭🇰 香港节点
+HOST-SUFFIX,mercadolibre.com,🇭🇰 香港节点
+HOST-SUFFIX,shopify.com,🇭🇰 香港节点
+HOST-KEYWORD,shopify,🇭🇰 香港节点
+HOST-KEYWORD,amazon,🛒 国外电商
+HOST-SUFFIX,amazon.com,🛒 国外电商
+HOST-SUFFIX,zhenghedata.com,🎶 TikTok
+HOST-KEYWORD,adspower,direct
+HOST-SUFFIX,adobe.com,direct
+HOST-SUFFIX,adobelogin.com,direct
+HOST-SUFFIX,adobe.io,direct
+HOST-SUFFIX,oracle.com,direct
+HOST-SUFFIX,oraclecloud.com,direct
+HOST-KEYWORD,oraclecloud,direct
+HOST-SUFFIX,oward-tech.com,direct
+HOST-SUFFIX,shshouwu.com,direct
+HOST-KEYWORD,shshouwu,direct
+HOST-SUFFIX,rtb56.com,direct
+HOST-KEYWORD,rtb56,direct
