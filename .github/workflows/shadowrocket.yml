@@ -1,0 +1,31 @@
+name: 生成小火箭配置
+
+on:
+  push:
+    paths:
+      - rules.yaml
+      - shadowrocket.template.conf
+      - tools/to_shadowrocket.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/to_shadowrocket.py
+      - name: 提交 shadowrocket.conf
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add shadowrocket.conf
+          git diff --cached --quiet || git commit -m "自动生成 shadowrocket.conf"
+          git push
+      - name: 刷新 jsDelivr 缓存
+        run: curl -s "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/shadowrocket.conf" || true
