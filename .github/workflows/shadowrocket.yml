@@ -1,10 +1,11 @@
-name: 生成小火箭和圈X配置
+﻿name: 生成小火箭、圈X、mihomo 配置
 
 on:
   push:
     paths:
       - rules.yaml
       - "*.template.conf"
+      - mihomo.template.yaml
       - tools/convert.py
   workflow_dispatch:
 
@@ -24,11 +25,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add shadowrocket.conf quantumultx.conf quantumultx-rules.list
-          git diff --cached --quiet || git commit -m "自动生成小火箭和圈X配置"
+          git add shadowrocket.conf quantumultx.conf quantumultx-rules.list mihomo.yaml
+          git diff --cached --quiet || git commit -m "自动生成小火箭、圈X、mihomo 配置"
           git push
       - name: 刷新 jsDelivr 缓存
         run: |
-          for f in shadowrocket.conf quantumultx.conf quantumultx-rules.list; do
+          for f in shadowrocket.conf quantumultx.conf quantumultx-rules.list mihomo.yaml; do
             curl -s "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/$f" || true
           done

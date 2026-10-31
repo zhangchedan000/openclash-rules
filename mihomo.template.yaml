@@ -1,0 +1,121 @@
+# mihomo（OpenClash / Clash Verge）配置模板（生成 mihomo.yaml 用，别直接导入这个文件）
+# 节点由 Sub-Store「文件 → mihomo 配置」注入，这里只放分组和分流规则
+# {{CUSTOM_RULES}} 会被替换成 rules.yaml 里的规则
+
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies: [♻️ 自动选择, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇬🇧 英国节点, 🇩🇪 德国节点, 🇲🇽 墨西哥节点, 🏠 家宽节点, DIRECT]
+    include-all: true
+  - name: ♻️ 自动选择
+    type: url-test
+    include-all: true
+    filter: "^((?!剩余|到期|流量|官网|套餐|过期).)*$"
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+    tolerance: 50
+  - name: 🇭🇰 香港节点
+    type: select
+    include-all: true
+    filter: "(?i)(香港|港|\\bHK\\b|Hong ?Kong)"
+  - name: 🇺🇸 美国节点
+    type: select
+    include-all: true
+    filter: "(?i)(美国|美|\\bUS\\b|\\bUSA\\b|United States|洛杉矶|圣何塞|西雅图|纽约|硅谷)"
+  - name: 🇬🇧 英国节点
+    type: select
+    include-all: true
+    filter: "(?i)(英国|英|\\bUK\\b|\\bGB\\b|United Kingdom|伦敦|London)"
+  - name: 🇩🇪 德国节点
+    type: select
+    include-all: true
+    filter: "(?i)(德国|德|\\bDE\\b|Germany|法兰克福|Frankfurt)"
+  - name: 🇲🇽 墨西哥节点
+    type: select
+    include-all: true
+    filter: "(?i)(墨西哥|\\bMX\\b|Mexico)"
+  - name: 🏠 家宽节点
+    type: select
+    include-all: true
+    filter: "(?i)(家宽|住宅|家庭|原生|\\bHome\\b|\\bISP\\b|Residential)"
+  - name: 🤖 ChatGPT
+    type: select
+    proxies: [🇺🇸 美国节点, 🚀 节点选择, 🏠 家宽节点, 🇬🇧 英国节点, 🇩🇪 德国节点]
+  - name: 💳 PayPal
+    type: select
+    proxies: [🏠 家宽节点, 🇺🇸 美国节点, 🚀 节点选择, 🇬🇧 英国节点, 🇩🇪 德国节点]
+  - name: 🛒 国外电商
+    type: select
+    proxies: [🇺🇸 美国节点, 🏠 家宽节点, 🚀 节点选择, 🇭🇰 香港节点, 🇬🇧 英国节点, 🇩🇪 德国节点]
+  - name: 🎶 TikTok
+    type: select
+    proxies: [🇲🇽 墨西哥节点, 🇺🇸 美国节点, 🏠 家宽节点, 🚀 节点选择, 🇬🇧 英国节点, 🇩🇪 德国节点]
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies: [🚀 节点选择, DIRECT]
+
+rule-providers:
+  Lan:
+    type: http
+    behavior: classical
+    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml
+    path: ./rule_provider/Lan.yaml
+    interval: 86400
+  OpenAI:
+    type: http
+    behavior: classical
+    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml
+    path: ./rule_provider/OpenAI.yaml
+    interval: 86400
+  Gemini:
+    type: http
+    behavior: classical
+    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Gemini/Gemini.yaml
+    path: ./rule_provider/Gemini.yaml
+    interval: 86400
+  Claude:
+    type: http
+    behavior: classical
+    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Claude/Claude.yaml
+    path: ./rule_provider/Claude.yaml
+    interval: 86400
+  TikTok:
+    type: http
+    behavior: classical
+    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/TikTok/TikTok.yaml
+    path: ./rule_provider/TikTok.yaml
+    interval: 86400
+  PayPal:
+    type: http
+    behavior: classical
+    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/PayPal/PayPal.yaml
+    path: ./rule_provider/PayPal.yaml
+    interval: 86400
+  Telegram:
+    type: http
+    behavior: classical
+    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml
+    path: ./rule_provider/Telegram.yaml
+    interval: 86400
+  Global:
+    type: http
+    behavior: classical
+    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Global/Global_Classical.yaml
+    path: ./rule_provider/Global.yaml
+    interval: 86400
+
+rules:
+  # ---- 自定义规则（来自 rules.yaml，自动生成）----
+{{CUSTOM_RULES}}
+  # ---- 通用规则 ----
+  - RULE-SET,Lan,DIRECT
+  - RULE-SET,OpenAI,🤖 ChatGPT
+  - RULE-SET,Gemini,🤖 ChatGPT
+  - RULE-SET,Claude,🇺🇸 美国节点
+  - RULE-SET,TikTok,🎶 TikTok
+  - RULE-SET,PayPal,💳 PayPal
+  - RULE-SET,Telegram,🚀 节点选择
+  - RULE-SET,Global,🚀 节点选择
+  - GEOIP,LAN,DIRECT,no-resolve
+  - GEOIP,CN,DIRECT
+  - MATCH,🐟 漏网之鱼

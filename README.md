@@ -7,7 +7,8 @@ OpenClash 自定义分流规则
 | `rules.yaml` | OpenClash 自定义规则，**只改这个** |
 | `shadowrocket.conf` | 小火箭配置，改完 `rules.yaml` 后由 GitHub Actions 自动生成 |
 | `quantumultx.conf` / `quantumultx-rules.list` | 圈X配置和自定义分流，同样自动生成 |
-| `*.template.conf` | 小火箭 / 圈X 配置模板（策略组、通用规则） |
+| `mihomo.yaml` | OpenClash / Clash Verge 用的分组+规则（不含节点），在 Sub-Store「文件」里选「mihomo 配置」注入节点 |
+| `*.template.conf` / `mihomo.template.yaml` | 小火箭 / 圈X / mihomo 配置模板（策略组、通用规则） |
 | `tools/convert.py` | 转换脚本 |
 
 ## 小火箭一键导入

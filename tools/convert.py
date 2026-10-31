@@ -4,6 +4,7 @@
   shadowrocket.conf       小火箭配置（规则直接写在 [Rule] 里）
   quantumultx.conf        圈X配置
   quantumultx-rules.list  圈X自定义分流（quantumultx.conf 里作为远程分流引用）
+  mihomo.yaml             mihomo 分组+规则模板（Sub-Store「mihomo 配置」文件注入节点后给 OpenClash 用）
 
 用法：python tools/convert.py
 GitHub Actions 会在 rules.yaml 或模板改动后自动运行。
@@ -95,12 +96,25 @@ def build_quantumultx(rules, warnings):
     return len(out)
 
 
+def build_mihomo(rules, warnings):
+    # rules.yaml 本身就是 Clash 写法，原样搬过去
+    template = load_template("mihomo.template.yaml")
+    groups = set(re.findall(r"^\s*- name:\s*(.+?)\s*$", template, re.M))
+    out = []
+    for parts in rules:
+        check_policy(parts[2] if len(parts) > 2 else "", groups, parts, "mihomo", warnings)
+        out.append("  - " + ",".join(parts))
+    write("mihomo.yaml", template.replace("{{CUSTOM_RULES}}", "\n".join(out)))
+    return len(out)
+
+
 def main():
     rules = read_rules()
     warnings = []
     sr = build_shadowrocket(rules, warnings)
     qx = build_quantumultx(rules, warnings)
-    print(f"共 {len(rules)} 条自定义规则：小火箭 {sr} 条，圈X {qx} 条")
+    mh = build_mihomo(rules, warnings)
+    print(f"共 {len(rules)} 条自定义规则：小火箭 {sr} 条，圈X {qx} 条，mihomo {mh} 条")
     for w in warnings:
         print("警告:", w)
     return 1 if any("策略组不存在" in w for w in warnings) else 0
